@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	.sideBySideDisplay {
+		display:flex;
+		width:100%;
+	}
+	.operand{
+		background-color:pink;
+		color:red;
+
+	}
+	.operand-night{
+		background-color:black;
+		color:white;
+
+	}	
+
+	.keypad {
+		column-count: 3;
+		display: flex;
+		background-color:red;
+		color:yellow;
+		/*width:50%;*/
+	}
+
+	.keypad button{
+
+		column-count: 3;
+		column-gap: 40px;
+		display: flex;
+		background-color:red;
+		color:yellow;
+		/*width:50%;*/
+	}
+	.keypad-night button {
+		column-count: 3;
+		display: flex;
+		background-color:grey;
+		color:yellow;
+		/*width:50%;*/
+	}
+	.keypad-night button{
+		column-count: 3;
+		display: flex;
+		background-color:grey;
+		color:yellow;
+		/*width:50%;*/
+	}
+	.operator button{
+		background-color:orange;
+		color:red;
+		/*width:50%;*/
+	}
+	.operator-night button{
+		background-color:darkred;
+		color:skyblue;
+		/*width:50%;*/
+	}
+	.outerscreen{
+		background-color:skyblue;
+		color:darkblue;
+		width:50%;
+	}
+	.outerscreen-night{
+		background-color:darkblue;
+		color:skyblue;
+		width:50%;
+	}
+
+	</style>
+<title>My calculator</title>
+<script type="text/javascript" src="Mymathfunctions.js2"></script>
+<script type="text/javascript" src="mynumberpanelUI.js2"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script type="text/javascript">
+	// Key functions JQuery.
+	$(document).ready(function(){
+		switchOperand('operand1','operand2');
+		$("#key1").click(function(){
+		Adddigits('operand1','operand2','1');		
+			});
+		$("#key9").click(function(){
+		Adddigits('operand1', 'operand2','9');
+			});
+		$("#key8").click(function(){
+		Adddigits('operand1', 'operand2','8');
+			});
+		$("#key7").click(function(){
+		Adddigits('operand1', 'operand2','7');
+			});
+		$("#key6").click(function(){
+		Adddigits('operand1', 'operand2','6');
+			});
+		$("#key5").click(function(){
+		Adddigits('operand1', 'operand2','5');
+		});
+		$("#key4").click(function(){
+		Adddigits('operand1', 'operand2','4');
+		});
+		$("#key3").click(function(){
+		Adddigits('operand1', 'operand2','3');
+		});
+		$("#key2").click(function(){
+		Adddigits('operand1', 'operand2','2');
+		});
+		// using unamed function(with ())
+		$("#operand1").keypress(function(){
+		Allowonlynumbers();
+		});
+		$("#operand2").keypress(function(){
+		Allowonlynumbers();	
+		});
+
+		// 	Mathematical functions Jquery.
+		$("#Add").click(function(){
+		Addnumbers('operand1','operand2','Answer');
+		});
+		$("#Subtract").click(function(){
+		subtractnumbers('operand1','operand2','Answer');
+		});
+		$("#Multiply").click(function(){
+		multiplynumbers('operand1','operand2','Answer');
+		});
+		$("#Divide").click(function(){
+		dividenumbers('operand1','operand2','Answer');
+		});
+		$("#findpercent").click(function(){
+		findpercent('operand1','operand2','Answer');
+		});
+		$("#clearall").click(function(){
+		clearall('operand1','operand2','Answer');
+		});
+		$("#findexponential").click(function(){
+		findexponential('operand1','operand2','Answer');
+		});
+		$("#findreminder").click(function(){
+		findreminder('operand1','operand2','Answer');
+		});
+		$("#setmemory").click(function(){
+		setmemory('Answer');
+		});
+		$("#recallmemory").click(function(){
+		recallmemory('Answer');
+		});
+		$("#memoryadd").click(function(){
+		memoryadd('Answer');
+		});
+		$("#memorysubtract").click(function(){
+		memorysubtract('Answer');
+		});
+		$("#keynextop").click(function(){
+		switchOperand('operand1','operand2');
+		});		
+	});
+	
+</script>
+</head>
+<body>
+<div align="center" class="outerscreen">
+<!-- beginning of outerscreen class division -->
+<div >
+	<div>
+	<h1 align="center"> Calculator </h1>
+	<input type="checkbox" onclick="ToggleNightmode('operand','keypad','operator','outerscreen')" id="nightmodeelector">[Night Mode]</input>
+	<hr style="height:2px;background-color:blue">
+	</div>
+<!-- beginning of operand 1,2, Ans division UI -->
+	<div align="center">
+	<!-- start of class selector operand division -->
+		<div class="operand">
+		Operand 1<input type="textbox" id="operand1" disabled></input><br><br>
+		Operand 2<input type="textbox" id="operand2" disabled></input><br><br>
+		Answer <input type="textbox" id="Answer" disabled></input>
+		</div>
+	<!--end of class selector operand division  -->
+	</div>
+	<!-- end OF OP 1,2,Ans UI division -->
+	<hr style="background:darkgreen;width:100%">
+
+
+	<div align="center" class="sideBySideDisplay">
+
+	<!-- beginning keypad panel UI division -->
+
+	<div align="center" column-count:3;>
+		<!-- Beginning of keypad class selector division -->
+		<div >
+		<button id= "key1" style="font-size:20px"> [1]</button>
+		<button id= "key2" style="font-size:20px"> [2]</button>
+		<button id= "key3" style="font-size:20px"> [3]</button><br><br>
+		<button id= "key4" style="font-size:20px"> [4]</button>
+		<button id= "key5" style="font-size:20px"> [5]</button>
+		<button id= "key6" style="font-size:20px"> [6]</button><br><br>
+		<button id= "key7" style="font-size:20px"> [7]</button>
+		<button id= "key8" style="font-size:20px"> [8]</button>
+		<button id= "key9" style="font-size:20px"> [9]</button><br><br>
+		<button id= "keybk"style="font-size:20px"> [bsp]</button>
+		<button id= "key0" style="font-size:20px"> [0]</button>
+		<button id= "keynextop" style="font-size:20px"> [Switch.Op]</button>
+
+		</div>
+	<!-- end of keypad class selector division -->
+	</div>
+	<!-- End keypad panel UI-->
+
+	<!-- beginning of math operator panel UI  division-->
+
+	<div align="center">
+		<!-- beginning of operator class selector division -->
+		<div class="operator">
+		<span><button id= "Add" style="font-size:20px">[+]</button>
+		<button id= "Subtract" style= "font-size:20px">[-]</button>
+		<button id= "Multiply" style= "font-size:20px"> [*]</button></span><br><br>
+		<span><button id= "Divide" style= "font-size:20px"> [/]</button>
+		<button id= "findpercent"  style= "font-size:20px"> [PER]</button>
+		<button id= "clearall"  style= "font-size:20px"> [C]</button></span><br><br>
+
+		<button id= "findexponential" style= "font-size:20px"> [Pow]
+		</button>
+		<button id= "findreminder" style= "font-size:20px"> [Rem]</button><br><br>
+		<button id= "setmemory" style= "font-size:20px"> [MS]</button>
+
+		<button id= "recallmemory" style= "font-size:20px"> [RM]</button>
+
+		<button id= "memoryadd" style= "font-size:20px"> [M+]</button>
+		<button id= "memorysubtract" style= "font-size:20px"> [M-]</button>
+		</div>
+	<!-- End of division 0f math panel UI  -->
+	</div>
+	<!-- end of operator class selector division -->
+
+
+	</div>
+
+</div>
+<!-- end of outerscreen -->
+
+</div>
+
+
+</body>
+</html>

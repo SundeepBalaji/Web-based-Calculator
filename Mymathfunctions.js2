@@ -1,0 +1,127 @@
+var memory=0;
+
+function setmemory(ansID){
+	memory= Number(document.getElementById(ansID).value);
+}
+function recallmemory(ansID){
+	document.getElementById(ansID).value =memory;
+}
+function memoryadd(ansID){
+	memory= Number(memory)+ Number(document.getElementById(ansID).value);
+}
+function memorysubtract(ansID){
+	memory= Number(memory)- Number(document.getElementById(ansID).value);
+}
+function findreminder(op1ID, op2ID, ansID){
+	var op1= 0;
+	var op2= 0;
+	var ans= 0;
+	op1= document.getElementById(op1ID).value;
+	op2= document.getElementById(op2ID).value;
+	ans= Number(op1)% Number(op2);
+	if (isNaN(ans)==true)
+		alert ("alphabets not allowed. only numerals allowed");
+	    else
+	    document.getElementById(ansID).value=String(ans);
+
+}
+    
+
+function Addnumbers(op1ID, op2ID, ansID){
+		
+	/*
+0	step 1 get the values for operand 1 & operand 2
+	step 2 Add the values of both operand 1 &2
+	step 3 put the sum answer in the answer textbox
+	*/
+	var op1= 1;
+	var op2= 0;
+	var ans= 0;
+	op1= document.getElementById(op1ID).value;
+	op2= document.getElementById(op2ID).value;
+	ans= Number(op1)+Number(op2);
+	if (isNaN(ans)==true) 
+		alert ("alpabhets not allowed. only numerals allowed");
+		else
+		document.getElementById(ansID).value=String(ans);
+	}
+	function subtractnumbers(op1ID, op2ID, ansID){
+		
+		var op1= 0;
+		var op2= 0;
+		var ans= 0;
+	op1= document.getElementById(op1ID).value;
+	op2= document.getElementById(op2ID).value;
+	ans= Number(op1)-Number(op2);
+	if (isNaN(ans)==true)
+		alert ("invalid operands. only numbers allowed");
+	    else
+	    document.getElementById(ansID).value=String(ans);	
+	}
+	function multiplynumbers(op1ID, op2ID, ansID){
+		var op1= 0;
+		var op2= 0;
+		var ans= 0;
+	op1= document.getElementById(op1ID).value;
+	op2= document.getElementById(op2ID).value;
+	ans= Number(op1)*Number(op2);
+	if (isNaN(ans)==true)
+		alert ("invalid operands. only numbers allowed");
+	    else
+	    document.getElementById(ansID).value=String(ans);
+
+	}
+	function dividenumbers(op1ID, op2ID, ansID){
+		var op1= 0;
+		var op2= 0;
+		var ans= 0;
+	op1= document.getElementById(op1ID).value;
+	op2= document.getElementById(op2ID).value;
+	ans= Number(op1)/Number(op2);
+	if (isNaN(ans)==true)
+		alert ("invalid operands. only numbers allowed");
+	    else
+	    document.getElementById(ansID).value=String(ans);
+	}
+	function findpercent(op1ID, op2ID, ansID){
+		var op1= 0;
+		var op2= 0;
+		var ans1= 0;
+		var ans2= 0;
+
+	op1= document.getElementById(op1ID).value;
+	op2= document.getElementById(op2ID).value;
+    ans1= (Number(op1)/Number(op2))*100;
+   
+    if (isNaN(ans1)==true)
+    	alert ("invalid operands. only numbers allowed");
+        else
+        document.getElementById(ansID).value=String(ans1)+"%";
+    }
+    function clearall(op1ID, op2ID, ansID){
+    var op1= 0;
+    var op2= 0;
+    var ans= 0;
+
+    document.getElementById(op1ID).value= op1;
+    document.getElementById(op2ID).value= op2;
+    document.getElementById(ansID).value= ans;
+    }
+    function findexponential(op1ID, op2ID, ansID){
+    var op1= 0;
+    var op2= 0;
+    var ans= 0;
+
+   op1= document.getElementById(op1ID).value;
+   op2= document.getElementById(op2ID).value;
+   ans= Number(op1)**Number(op2);
+   if (isNaN(ans)==true)
+   	alert ("invalid input. only numbers allowed");
+   else
+   	document.getElementById(ansID).value=String(ans);
+    }
+
+
+
+        	
+	

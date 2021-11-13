@@ -1,0 +1,81 @@
+var defaultSelectedOp =0;// The very first call to switchOperand function will set this value to operand 1
+var nightmodeon =false;
+function Adddigits(op1ID, op2ID, newdigittoadd){
+	var op1Obj= document.getElementById(op1ID);
+	var op2Obj= document.getElementById(op2ID);
+	if (defaultSelectedOp ==1){
+		op1Obj.value= op1Obj.value+ newdigittoadd;
+	}else{
+		op2Obj.value= op2Obj.value+ newdigittoadd;
+
+	}
+}
+function switchOperand(op1ID, op2ID){  
+	var op1Obj=null;
+	op1Obj = document.getElementById(op1ID);
+	var op2Obj= document.getElementById(op2ID);
+	if (defaultSelectedOp == 1){
+		defaultSelectedOp = 2;
+		op2Obj.style.background = "yellow";
+		op1Obj.style.background = "lightgrey";
+		op2Obj.disabled= false;
+		op1Obj.disabled= true;
+		op2Obj.focus();
+	}else{
+		defaultSelectedOp =1;
+		op1Obj.style.background = "yellow";
+		op2Obj.style.background = "lightgrey";
+		op1Obj.disabled= false;
+		op2Obj.disabled= true;
+		op1Obj.focus();
+	}
+}
+ function Removedigits(op1ID, op2ID, newdigittoremove){
+    var op1Obj= document.getElementById(op1ID);
+    var op2Obj= document.getElementById(op2ID);
+    if (defaultSelectedOp ==1){
+    	var str= op1Obj.value;
+    	str = str.substring(0,str.length-1);
+    	op1Obj.value=str;
+    }else{
+    	var str= op2Obj.value;
+    	str = str.substring(0,str.length-1);
+    	op2Obj.value=str;
+
+    }
+ }
+ function ToggleNightmode(cls1ID, cls2ID, cls3ID, cls4ID){
+ 	var cls1Obj= document.getElementsByClassName(cls1ID);
+ 	var cls2Obj= document.getElementsByClassName(cls2ID);
+ 	var cls3Obj= document.getElementsByClassName(cls3ID);
+ 	var cls4Obj= document.getElementsByClassName(cls4ID);
+ 	var temp, i=0;
+
+ 	for (i = 0; i < cls1Obj.length; i++) {
+ 		cls1Obj[i].classList.toggle(cls1ID+"-night");
+ 	}
+ 	 	for (i = 0; i < cls2Obj.length; i++) {
+ 		cls2Obj[i].classList.toggle(cls2ID+"-night");
+ 	}
+ 	 	for (i = 0; i < cls3Obj.length; i++) {
+ 		cls3Obj[i].classList.toggle(cls3ID+"-night");
+ 	}
+ 	 	for (i = 0; i < cls4Obj.length; i++) {
+ 		cls4Obj[i].classList.toggle(cls4ID+"-night");
+ 	}
+
+ 	if(nightmodeon ==false){
+ 		nightmodeon =true;
+
+ 	}else{
+ 		nightmodeon =false;
+ 	}
+ }
+function Allowonlynumbers(){
+   var evt = (event) ? event : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if ((charCode >= 48 &&  charCode <=57)||(charCode == 46)){
+        return true;
+    }
+    return event.preventDefault();
+}
